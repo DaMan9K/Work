@@ -14,27 +14,27 @@
         <Grid x:Name="GContr" Margin="117,0,0,0">
             <DataGrid x:Name="DGContr" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер контракта" Binding="{IdContract}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Номер клиента" Binding="{IdClients}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Номер работника" Binding="{IdWorker}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Сумма кредита" Binding="{CreditAmount}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Процент" Binding="{IterestOnAloan}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Срок оплаты" Binding="{DueDate}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Номер контракта" Binding="{Binding IdContract}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Номер клиента" Binding="{Binding IdClients}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Номер работника" Binding="{Binding IdWorker}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Сумма кредита" Binding="{Binding CreditAmount}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Процент" Binding="{Binding IterestOnAloan}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Срок оплаты" Binding="{Binding DueDate}" ClipboardContentBinding="{x:Null}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
         <Grid Visibility="Hidden"  x:Name="GClient" Margin="117,0,0,0">
             <DataGrid x:Name="DGClient" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер контракта" Binding="{IdClients}" />
-                    <DataGridTextColumn Header="Номер клиента" Binding="{FirstName}" />
-                    <DataGridTextColumn Header="Номер работника" Binding="{SecondName}" />
-                    <DataGridTextColumn Header="Сумма кредита" Binding="{LastName}" />
-                    <DataGridTextColumn Header="Процент" Binding="{PassportSeries}" />
-                    <DataGridTextColumn Header="Срок оплаты" Binding="{PassportID}" />
-                    <DataGridTextColumn Header="Сумма кредита" Binding="{PlaseOfResidence}" />
-                    <DataGridTextColumn Header="Процент" Binding="{Registration}" />
-                    <DataGridTextColumn Header="Срок оплаты" Binding="{CountryOfBiryh}"/>
+                    <DataGridTextColumn Header="Номер контракта" Binding="{Binding IdClients}" />
+                    <DataGridTextColumn Header="Номер клиента" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="Номер работника" Binding="{Binding SecondName}" />
+                    <DataGridTextColumn Header="Сумма кредита" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="Процент" Binding="{Binding PassportSeries}" />
+                    <DataGridTextColumn Header="Срок оплаты" Binding="{Binding PassportID}" />
+                    <DataGridTextColumn Header="Сумма кредита" Binding="{Binding PlaseOfResidence}" />
+                    <DataGridTextColumn Header="Процент" Binding="{Binding Registration}" />
+                    <DataGridTextColumn Header="Срок оплаты" Binding="{Binding CountryOfBiryh}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
