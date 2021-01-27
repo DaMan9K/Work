@@ -32,6 +32,7 @@ namespace Work.Windows
 
         private void BTLogin_Click(object sender, RoutedEventArgs e)
         {
+
        
             Workers m = creditoffice.Workers.Where(c => c.Login == Login.Text && c.Password == Password.Password).SingleOrDefault();
             if(m.Post == "Менеджер")
@@ -42,7 +43,7 @@ namespace Work.Windows
             }
             else if(m == null)
             {
-                MessageBox.Show("Такого пользователя нет");
+               MessageBox.Show("такого пользователя нет");
             }
            
         }

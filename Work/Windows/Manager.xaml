@@ -5,21 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Work.Windows"
         mc:Ignorable="d"
-        Title="Manager" Height="450" Width="850">
+        Title="Manager" Height="500" Width="860">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Width="117">
-            <Button x:Name="BTContr" Content="Контракты" Height="210"/>
-            <Button x:Name="BTclients" Content="Клиента" Height="210"/>
+            <Button x:Name="BTContr" Content="Контракты" Height="240" Click="BTContr_Click"/>
+            <Button x:Name="BTСlients" Content="Клиента" Height="240" Click="BTСlients_Click"/>
         </StackPanel>
-        <Grid Margin="117,0,0,0">
-            <DataGrid AutoGenerateColumns="False">
+        <Grid x:Name="GContr" Margin="117,0,0,0">
+            <DataGrid x:Name="DGContr" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер контракта" Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Номер клиента" Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Номер работника" Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Сумма кредита" Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Процент" Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Срок оплаты" Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Номер контракта" Binding="{IdContract}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Номер клиента" Binding="{IdClients}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Номер работника" Binding="{IdWorker}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Сумма кредита" Binding="{CreditAmount}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Процент" Binding="{IterestOnAloan}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Срок оплаты" Binding="{DueDate}" ClipboardContentBinding="{x:Null}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Visibility="Hidden"  x:Name="GClient" Margin="117,0,0,0">
+            <DataGrid x:Name="DGClient" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер контракта" Binding="{IdClients}" />
+                    <DataGridTextColumn Header="Номер клиента" Binding="{FirstName}" />
+                    <DataGridTextColumn Header="Номер работника" Binding="{SecondName}" />
+                    <DataGridTextColumn Header="Сумма кредита" Binding="{LastName}" />
+                    <DataGridTextColumn Header="Процент" Binding="{PassportSeries}" />
+                    <DataGridTextColumn Header="Срок оплаты" Binding="{PassportID}" />
+                    <DataGridTextColumn Header="Сумма кредита" Binding="{PlaseOfResidence}" />
+                    <DataGridTextColumn Header="Процент" Binding="{Registration}" />
+                    <DataGridTextColumn Header="Срок оплаты" Binding="{CountryOfBiryh}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

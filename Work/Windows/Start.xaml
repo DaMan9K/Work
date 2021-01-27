@@ -9,21 +9,20 @@
         Title="Авторизация" Height="450" Width="800">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Margin="211,152,212,153">
+        <StackPanel Margin="211,152,212,105">
 
             <TextBox x:Name="Login" Text="" materialDesign:HintAssist.Hint="Введите логин" />
-            <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Введит пароль"/>
-
+            <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Введит пароль" Margin="0 5"/>
+           
             <Button x:Name="BTLogin" Content="Войти"
                 BorderBrush="Black"
                 VerticalAlignment="Top" Click="BTLogin_Click"
+                Margin="0 5"
                />
             <Button x:Name="BTBack" Content="Вернуться"
                 BorderBrush="Black"
                 VerticalAlignment="Top" Click="BTBack_Click"
+                Margin=" 0 5"
                />
         </StackPanel>
         <TextBlock Foreground="Black" Text="Привет Вам!" FontSize="30" FontWeight="Bold" Margin="301,100,302,272"/>

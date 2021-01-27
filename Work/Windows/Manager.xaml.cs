@@ -19,9 +19,29 @@ namespace Work.Windows
     /// </summary>
     public partial class Manager : Window
     {
+        CreditOfficeEntities credit = new CreditOfficeEntities();
         public Manager()
         {
             InitializeComponent();
+            Update();
+        }
+        private void Update()
+        {
+            DGContr.ItemsSource = credit.Contarct.ToList();
+            DGClient.ItemsSource = credit.Clients.ToList();
+
+        }
+
+        private void BTContr_Click(object sender, RoutedEventArgs e)
+        {
+            GContr.Visibility = Visibility.Visible;
+            GClient.Visibility = Visibility.Hidden;
+        }
+
+        private void BTСlients_Click(object sender, RoutedEventArgs e)
+        {
+            GClient.Visibility = Visibility.Visible;
+            GContr.Visibility = Visibility.Hidden;
         }
     }
 }
