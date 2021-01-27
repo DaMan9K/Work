@@ -1,0 +1,32 @@
+﻿<Window x:Class="Work.Windows.Start"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Work.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="450" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="211,152,212,153">
+
+            <TextBox x:Name="Login" Text="" materialDesign:HintAssist.Hint="Введите логин" />
+            <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Введит пароль"/>
+
+            <Button x:Name="BTLogin" Content="Войти"
+                BorderBrush="Black"
+                VerticalAlignment="Top" Click="BTLogin_Click"
+               />
+            <Button x:Name="BTBack" Content="Вернуться"
+                BorderBrush="Black"
+                VerticalAlignment="Top" Click="BTBack_Click"
+               />
+        </StackPanel>
+        <TextBlock Foreground="Black" Text="Привет Вам!" FontSize="30" FontWeight="Bold" Margin="301,100,302,272"/>
+
+    </Grid>
+</Window>
