@@ -9,14 +9,13 @@
     <Grid>
         <StackPanel HorizontalAlignment="Left" Width="117">
             <Button x:Name="BTContr" Content="Контракты" Height="240" Click="BTContr_Click"/>
-            <Button x:Name="BTСlients" Content="Клиента" Height="240" Click="BTСlients_Click"/>
+            <Button x:Name="BTСlients" Content="Клиента" Height="231" Click="BTСlients_Click"/>
         </StackPanel>
-        <Grid x:Name="GContr" Margin="117,0,0,0">
-            <DataGrid x:Name="DGContr" AutoGenerateColumns="False">
+        <Grid x:Name="GContr" Margin="117,0,0,149">
+            <DataGrid x:Name="DGContr" AutoGenerateColumns="False" Margin="0,0,0,151">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер контракта" Binding="{Binding IdContract}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Номер клиента" Binding="{Binding IdClients}" ClipboardContentBinding="{x:Null}"/>
-                    <DataGridTextColumn Header="Номер работника" Binding="{Binding IdWorker}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Клиент" Binding="{Binding IdClients}" ClipboardContentBinding="{x:Null}"/>
+                    <DataGridTextColumn Header="Работник" Binding="{Binding IdWorker}" ClipboardContentBinding="{x:Null}"/>
                     <DataGridTextColumn Header="Сумма кредита" Binding="{Binding CreditAmount}" ClipboardContentBinding="{x:Null}"/>
                     <DataGridTextColumn Header="Процент" Binding="{Binding IterestOnAloan}" ClipboardContentBinding="{x:Null}"/>
                     <DataGridTextColumn Header="Срок оплаты" Binding="{Binding DueDate}" ClipboardContentBinding="{x:Null}"/>
@@ -26,17 +25,26 @@
         <Grid Visibility="Hidden"  x:Name="GClient" Margin="117,0,0,0">
             <DataGrid x:Name="DGClient" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер контракта" Binding="{Binding IdClients}" />
-                    <DataGridTextColumn Header="Номер клиента" Binding="{Binding FirstName}" />
-                    <DataGridTextColumn Header="Номер работника" Binding="{Binding SecondName}" />
-                    <DataGridTextColumn Header="Сумма кредита" Binding="{Binding LastName}" />
-                    <DataGridTextColumn Header="Процент" Binding="{Binding PassportSeries}" />
-                    <DataGridTextColumn Header="Срок оплаты" Binding="{Binding PassportID}" />
-                    <DataGridTextColumn Header="Сумма кредита" Binding="{Binding PlaseOfResidence}" />
-                    <DataGridTextColumn Header="Процент" Binding="{Binding Registration}" />
-                    <DataGridTextColumn Header="Срок оплаты" Binding="{Binding CountryOfBiryh}"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding SecondName}" />
+                    <DataGridTextColumn Header="Серия паспорта" Binding="{Binding PassportSeries}" />
+                    <DataGridTextColumn Header="Номер паспорта" Binding="{Binding PassportID}" />
+                    <DataGridTextColumn Header="Факт.место.проживания" Binding="{Binding PlaseOfResidence}" />
+                    <DataGridTextColumn Header="Место регистрации" Binding="{Binding Registration}" />
+                    <DataGridTextColumn Header="Гражданство" Binding="{Binding CountryOfBiryh}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
+        <Button Content="" HorizontalAlignment="Left" Margin="633,409,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="752,409,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="633,349,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="752,349,0,0" VerticalAlignment="Top" Width="76"/>
+        <TextBox HorizontalAlignment="Left" Height="22" x:Name="TBCredit" Margin="428,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Slider HorizontalAlignment="Left" x:Name="SProch" Margin="130,429,0,0" VerticalAlignment="Top" Height="26" Width="252"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="CBMouth" Margin="430,412,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
+        <TextBlock HorizontalAlignment="Left" x:Name="TBLPocent" Text="7" TextWrapping="Wrap" Margin="136,0,0,45" Height="16" VerticalAlignment="Bottom"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="CBCLients" VerticalAlignment="Top" Width="120" Margin="136,343,0,0"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="CBWorker" VerticalAlignment="Top" Width="120" Margin="284,343,0,0"/>
     </Grid>
 </Window>
