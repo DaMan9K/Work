@@ -11,6 +11,7 @@
             <Button x:Name="BTContr" Content="Контракты" Height="240" Click="BTContr_Click"/>
             <Button x:Name="BTСlients" Content="Клиента" Height="231" Click="BTСlients_Click"/>
         </StackPanel>
+
         <Grid x:Name="GContr" Margin="117,0,0,149">
             <DataGrid x:Name="DGContr" AutoGenerateColumns="False" Margin="0,0,0,151">
                 <DataGrid.Columns>
