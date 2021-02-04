@@ -13,10 +13,10 @@ namespace Work
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CreditOfficeEntities : DbContext
+    public partial class COfficeEntities1 : DbContext
     {
-        public CreditOfficeEntities()
-            : base("name=CreditOfficeEntities")
+        public COfficeEntities1()
+            : base("name=COfficeEntities1")
         {
         }
     
@@ -27,6 +27,7 @@ namespace Work
     
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Contarct> Contarct { get; set; }
+        public virtual DbSet<Mouths> Mouths { get; set; }
         public virtual DbSet<NameCountry> NameCountry { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Workers> Workers { get; set; }

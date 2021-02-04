@@ -77,40 +77,43 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Clients.cs">
-      <DependentUpon>DbCredit.tt</DependentUpon>
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>
     <Compile Include="Contarct.cs">
-      <DependentUpon>DbCredit.tt</DependentUpon>
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbCredit.Context.cs">
+    <Compile Include="DBCreditBank.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbCredit.Context.tt</DependentUpon>
+      <DependentUpon>DBCreditBank.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbCredit.cs">
+    <Compile Include="DBCreditBank.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbCredit.tt</DependentUpon>
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbCredit.Designer.cs">
+    <Compile Include="DBCreditBank.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbCredit.edmx</DependentUpon>
+      <DependentUpon>DBCreditBank.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Mouths.cs">
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>
     <Compile Include="NameCountry.cs">
-      <DependentUpon>DbCredit.tt</DependentUpon>
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>
     <Compile Include="Post.cs">
-      <DependentUpon>DbCredit.tt</DependentUpon>
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows\Manager.xaml.cs">
       <DependentUpon>Manager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Workers.cs">
-      <DependentUpon>DbCredit.tt</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Start.xaml.cs">
       <DependentUpon>Start.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workers.cs">
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -131,12 +134,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DbCredit.edmx">
+    <EntityDeploy Include="DBCreditBank.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbCredit.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCreditBank.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DbCredit.edmx.diagram">
-      <DependentUpon>DbCredit.edmx</DependentUpon>
+    <None Include="DBCreditBank.edmx.diagram">
+      <DependentUpon>DBCreditBank.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -146,18 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DbCredit.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbCredit.Context.cs</LastGenOutput>
-      <DependentUpon>DbCredit.edmx</DependentUpon>
-    </Content>
-    <Content Include="DbCredit.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbCredit.edmx</DependentUpon>
-      <LastGenOutput>DbCredit.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Windows\Manager.xaml">
@@ -172,7 +163,18 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DBCreditBank.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBCreditBank.edmx</DependentUpon>
+      <LastGenOutput>DBCreditBank.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBCreditBank.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBCreditBank.edmx</DependentUpon>
+      <LastGenOutput>DBCreditBank.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

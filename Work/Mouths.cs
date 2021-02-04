@@ -12,17 +12,17 @@ namespace Work
     using System;
     using System.Collections.Generic;
     
-    public partial class Contarct
+    public partial class Mouths
     {
-        public int IdContract { get; set; }
-        public int IdClients { get; set; }
-        public int IdWorker { get; set; }
-        public double CreditAmount { get; set; }
-        public int InterestOnALoan { get; set; }
-        public string DueDate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Mouths()
+        {
+            this.Contarct = new HashSet<Contarct>();
+        }
     
-        public virtual Clients Clients { get; set; }
-        public virtual Mouths Mouths { get; set; }
-        public virtual Workers Workers { get; set; }
+        public string NomberOfMouths { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contarct> Contarct { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Work.Windows
     /// </summary>
     public partial class Manager : Window
     {
-        CreditOfficeEntities credit = new CreditOfficeEntities();
+        COfficeEntities1 credit  = new COfficeEntities1();   
         public Manager()
         {
             InitializeComponent();
@@ -27,8 +27,12 @@ namespace Work.Windows
         }
         private void Update()
         {
+            
             DGContr.ItemsSource = credit.Contarct.ToList();
             DGClient.ItemsSource = credit.Clients.ToList();
+            CBCLients.ItemsSource = credit.Clients.Select(x => x.LastName).ToList();
+            CBWorker.ItemsSource = credit.Workers.Select(x => x.LastName).ToList();
+            CBMouth.ItemsSource = credit.Mouths.Select(x => x.NomberOfMouths).ToString().ToList();
 
         }
 

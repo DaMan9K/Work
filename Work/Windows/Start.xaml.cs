@@ -22,7 +22,7 @@ namespace Work.Windows
     public partial class Start : Window
     {
 
-        CreditOfficeEntities creditoffice = new CreditOfficeEntities();
+         COfficeEntities1  creditoffice = new COfficeEntities1();
         public Start()
         {
             
