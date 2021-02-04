@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +18,25 @@ namespace Work.Windows
     /// <summary>
     /// Логика взаимодействия для Manager.xaml
     /// </summary>
+    
     public partial class Manager : Window
     {
+        private List<int> worker = new List<int>();
         COfficeEntities1 credit  = new COfficeEntities1();   
+        
         public Manager()
         {
             InitializeComponent();
+          
             Update();
         }
         private void Update()
         {
             
+
+            SProch.Value = 11;
+            string Sptest;
+            Sptest = SProch.Value.ToString();
             DGContr.ItemsSource = credit.Contarct.ToList();
             DGClient.ItemsSource = credit.Clients.ToList();
             CBCLients.ItemsSource = credit.Clients.Select(x => x.LastName).ToList();
@@ -46,6 +55,13 @@ namespace Work.Windows
         {
             GClient.Visibility = Visibility.Visible;
             GContr.Visibility = Visibility.Hidden;
+        }
+
+
+        private void BTSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            Contarct contarct = new Contarct();
+
         }
     }
 }
