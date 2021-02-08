@@ -16,6 +16,8 @@
         <AssociationConnector Association="CreditOfficeModel.FK_Contarct_Mouths" ManuallyRouted="false" />
         <AssociationConnector Association="CreditOfficeModel.FK_Contarct_Workers" ManuallyRouted="false" />
         <AssociationConnector Association="CreditOfficeModel.FK_Workers_Post" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CreditOfficeModel.Archive" Width="1.5" PointX="7.5" PointY="1.375" />
+        <AssociationConnector Association="CreditOfficeModel.FK_Archive_Contarct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

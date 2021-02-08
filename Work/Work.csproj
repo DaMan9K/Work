@@ -76,6 +76,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Archive.cs">
+      <DependentUpon>DBCreditBank.tt</DependentUpon>
+    </Compile>
     <Compile Include="Clients.cs">
       <DependentUpon>DBCreditBank.tt</DependentUpon>
     </Compile>

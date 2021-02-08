@@ -31,5 +31,6 @@ namespace Work
         public virtual DbSet<NameCountry> NameCountry { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Workers> Workers { get; set; }
+        public virtual DbSet<Archive> Archive { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         <StackPanel Margin="211,152,212,105">
 
             <TextBox x:Name="Login" Text="" materialDesign:HintAssist.Hint="Введите логин" />
-            <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Введит пароль" Margin="0 5"/>
+            <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Введите пароль" Margin="0 5"/>
            
             <Button x:Name="BTLogin" Content="Войти"
                 BorderBrush="Black"

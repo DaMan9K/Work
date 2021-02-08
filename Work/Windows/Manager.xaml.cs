@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,28 +21,61 @@ namespace Work.Windows
     /// </summary>
     
     public partial class Manager : Window
-    {
-        private List<int> worker = new List<int>();
+    { 
+        List<int> CBWorkerson = new List<int>();
+        List<int> CBClientson = new List<int>();
         COfficeEntities1 credit  = new COfficeEntities1();   
         
         public Manager()
         {
             InitializeComponent();
-          
+            Flued();
             Update();
+        }
+
+        private void Flued()
+        {
+           List<Workers> vs = credit.Workers.ToList();
+           foreach (var item in vs)
+            {
+                CBWorker.Items.Add($"{item.LastName} {item.FirstName} {item.SecondName}");
+                 CBWorkerson.Add(item.IdWorker);
+
+           }
+           List<Clients> ss = credit.Clients.ToList();
+           foreach (var iClientse in ss)
+           {
+               CBCLients.Items.Add($"{iClientse.LastName} {iClientse.FirstName} {iClientse.SecondName}");
+               CBClientson.Add(iClientse.IDClients);
+           }
         }
         private void Update()
         {
-            
+            Workers workers = new Workers();
+            Clients clients = new Clients();
+            int c = workers.IdWorker;
+            int g = 0;
+            for (int i = 0; i < CBWorkerson.Count; i++)
+            {
+                if (CBWorkerson[i] == c)
+                    g = i;
+            }
 
+            int clientid = clients.IDClients;
+            int r = 0;
+            for (int s = 0; s < CBClientson.Count; s++)
+            {
+                if (CBClientson[s] == clientid)
+                    r = s;
+            }
+            credit.SaveChanges();
+            CBWorker.SelectedIndex = g;
             SProch.Value = 11;
             string Sptest;
             Sptest = SProch.Value.ToString();
             DGContr.ItemsSource = credit.Contarct.ToList();
             DGClient.ItemsSource = credit.Clients.ToList();
-            CBCLients.ItemsSource = credit.Clients.Select(x => x.LastName).ToList();
-            CBWorker.ItemsSource = credit.Workers.Select(x => x.LastName).ToList();
-            CBMouth.ItemsSource = credit.Mouths.Select(x => x.NomberOfMouths).ToString().ToList();
+            CBMouth.ItemsSource = credit.Mouths.Select(x => x.NomberOfMouths).ToList();
 
         }
 
@@ -60,8 +94,26 @@ namespace Work.Windows
 
         private void BTSave_OnClick(object sender, RoutedEventArgs e)
         {
-            Contarct contarct = new Contarct();
+            Contarct contract = new Contarct();
+            contract.IdWorker = CBWorkerson[CBWorker.SelectedIndex];
+            try
+            {
+                contract.CreditAmount = Convert.ToDouble(TBCredit.Text);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Вы ввели неверные символы");
+            }
+
+            contract.IdClients = CBClientson[CBCLients.SelectedIndex];
+            contract.DueDate = CBMouth.Text;
+            contract.InterestOnALoan = Convert.ToInt32(TBLPocent.Text);
+            credit.Contarct.Add(contract);
+             Update();
+
+
 
         }
+
     }
 }
