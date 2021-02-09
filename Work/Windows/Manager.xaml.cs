@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32.SafeHandles;
 
 namespace Work.Windows
 {
@@ -115,5 +116,9 @@ namespace Work.Windows
 
         }
 
+        private void TBPass_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "1234567890".IndexOf(e.Text) < 0;
+        }
     }
 }

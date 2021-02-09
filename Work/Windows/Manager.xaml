@@ -19,7 +19,7 @@
             <Button x:Name="BTСlients" Content="Клиенты" Height="231" Click="BTСlients_Click"/>
         </StackPanel>
 
-        <Grid x:Name="GContr" Margin="117,0,0,0">
+        <Grid x:Name="GContr" Visibility="Hidden" Margin="117,0,0,0">
             <DataGrid x:Name="DGContr" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="0.4*" Header="Клиент" Binding="{Binding IdClients }" ClipboardContentBinding="{x:Null}"/>
@@ -56,7 +56,7 @@
                 </Grid>
             </WrapPanel>
         </Grid>
-        <Grid Visibility="Hidden"  x:Name="GClient" Margin="117,0,0,0">
+        <Grid Visibility="Visible"  x:Name="GClient" Margin="117,0,0,0">
             <DataGrid x:Name="DGClient" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="0.4*" Header="Фамилия" Binding="{Binding LastName}" />
@@ -69,6 +69,17 @@
                     <DataGridTextColumn Width="0.4*" Header="Гражданство" Binding="{Binding CountryOfBiryh}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <WrapPanel  Margin="0,0,162,0" Height="149" VerticalAlignment="Bottom">
+                <TextBox x:Name="TBLName" materialDesign:HintAssist.Hint="Фамилия" Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBFName" materialDesign:HintAssist.Hint="Имя"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBSName" materialDesign:HintAssist.Hint="Отчество"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBPass" materialDesign:HintAssist.Hint="С/Н паспорта" Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120" PreviewTextInput="TBPass_PreviewTextInput"/>
+                <TextBox x:Name="TBAPOR" materialDesign:HintAssist.Hint="Факт.Место прож." Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <CheckBox x:Name="CBReg"   Content=""  ToolTip="Поставьте галочку если место жительсва соответствует регестрации"/>
+                <TextBox x:Name="TBRegistr" materialDesign:HintAssist.Hint="Место прож."  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <ComboBox x:Name="CBCitizen" Margin="15 25" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+            </WrapPanel>
+
         </Grid>
         
 
