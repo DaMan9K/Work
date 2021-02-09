@@ -16,10 +16,10 @@
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Left" Width="117">
             <Button x:Name="BTContr" Content="Контракты" Height="240" Click="BTContr_Click"/>
-            <Button x:Name="BTСlients" Content="Клиента" Height="231" Click="BTСlients_Click"/>
+            <Button x:Name="BTСlients" Content="Клиенты" Height="231" Click="BTСlients_Click"/>
         </StackPanel>
 
-        <Grid x:Name="GContr" Margin="117,0,0,149">
+        <Grid x:Name="GContr" Margin="117,0,0,0">
             <DataGrid x:Name="DGContr" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="0.4*" Header="Клиент" Binding="{Binding IdClients }" ClipboardContentBinding="{x:Null}"/>
@@ -29,6 +29,32 @@
                     <DataGridTextColumn Width="0.4*" Header="Срок оплаты" Binding="{Binding DueDate}" ClipboardContentBinding="{x:Null}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button x:Name="BTSave" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,88" VerticalAlignment="Bottom" Width="114" Click="BTSave_OnClick"/>
+            <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,24,33" VerticalAlignment="Bottom" Width="116" />
+
+            <WrapPanel Margin="0,0,162,0" Height="149" VerticalAlignment="Bottom">
+                <ComboBox x:Name="CBCLients" Margin="15 25" VerticalAlignment="Bottom"  SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
+                <ComboBox x:Name="CBWorker" Margin=" 15 25" VerticalAlignment="Bottom"  SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
+                <ComboBox x:Name="CBMouth" Margin="15 25"  VerticalAlignment="Bottom" SelectedIndex="0" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBCredit" materialDesign:HintAssist.Hint="Введите сумму кредита"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+
+                <Grid>
+                    <TextBlock x:Name="TBLPocent" Margin="15 10" Text="{Binding ElementName=SProch, Path=Value}"   TextWrapping="Wrap"  Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="13"/>
+                    <Slider
+                        x:Name="SProch"
+                        Value="50"
+                        Minimum="11"
+                        Maximum="50"
+                        SmallChange="1"
+                        LargeChange="10"
+                        Margin="15 20" 
+                        VerticalAlignment="Bottom"
+                        Height="26"
+                        TickFrequency="1"
+                        IsSnapToTickEnabled="True" HorizontalAlignment="Left" Width="252"
+                    />
+                </Grid>
+            </WrapPanel>
         </Grid>
         <Grid Visibility="Hidden"  x:Name="GClient" Margin="117,0,0,0">
             <DataGrid x:Name="DGClient" AutoGenerateColumns="False">
@@ -44,32 +70,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Button x:Name="BTSave" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,88" VerticalAlignment="Bottom" Width="114" Click="BTSave_OnClick"/>
-        <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,24,33" VerticalAlignment="Bottom" Width="116" />
-
-        <WrapPanel Margin="117,0,162,0" Height="149" VerticalAlignment="Bottom">
-            <ComboBox x:Name="CBCLients" Margin="15 25" VerticalAlignment="Bottom"  SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
-            <ComboBox x:Name="CBWorker" Margin=" 15 25" VerticalAlignment="Bottom"  SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
-            <ComboBox x:Name="CBMouth" Margin="15 25"  VerticalAlignment="Bottom" SelectedIndex="0" HorizontalAlignment="Left" Width="120"/>
-            <TextBox x:Name="TBCredit" materialDesign:HintAssist.Hint="Введите сумму кредита"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
-
-            <Grid>
-                <TextBlock x:Name="TBLPocent" Margin="15 10" Text="{Binding ElementName=SProch, Path=Value}"   TextWrapping="Wrap"  Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="13"/>
-                <Slider
-                x:Name="SProch"
-                Value="50"
-                Minimum="11"
-                Maximum="50"
-                SmallChange="1"
-                LargeChange="10"
-                Margin="15 20" 
-                VerticalAlignment="Bottom"
-                Height="26"
-                TickFrequency="1"
-                IsSnapToTickEnabled="True" HorizontalAlignment="Left" Width="252"
-            />
-            </Grid>
-        </WrapPanel>
+        
 
     </Grid>
 </Window> 
