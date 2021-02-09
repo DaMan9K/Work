@@ -5,19 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="03786a7befc943fa878a02a7cfa95de0" Name="Diagram1">
-        <EntityTypeShape EntityType="CreditOfficeModel.Clients" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CreditOfficeModel.Contarct" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CreditOfficeModel.Mouths" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CreditOfficeModel.NameCountry" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CreditOfficeModel.Post" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CreditOfficeModel.Workers" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <AssociationConnector Association="CreditOfficeModel.FK_Clients_NameCountry" ManuallyRouted="false" />
-        <AssociationConnector Association="CreditOfficeModel.FK_Contarct_Clients" ManuallyRouted="false" />
         <AssociationConnector Association="CreditOfficeModel.FK_Contarct_Mouths" ManuallyRouted="false" />
         <AssociationConnector Association="CreditOfficeModel.FK_Contarct_Workers" ManuallyRouted="false" />
         <AssociationConnector Association="CreditOfficeModel.FK_Workers_Post" ManuallyRouted="false" />
         <EntityTypeShape EntityType="CreditOfficeModel.Archive" Width="1.5" PointX="7.5" PointY="1.375" />
         <AssociationConnector Association="CreditOfficeModel.FK_Archive_Contarct" />
+        <EntityTypeShape EntityType="CreditOfficeModel.Citizen" Width="1.5" PointX="5.375" PointY="5.875" />
+        <EntityTypeShape EntityType="CreditOfficeModel.Clients" Width="1.5" PointX="7.625" PointY="4.875" />
+        <AssociationConnector Association="CreditOfficeModel.FK_Clients_Citizen" />
+        <AssociationConnector Association="CreditOfficeModel.FK_Clients_NameCountry" />
+        <AssociationConnector Association="CreditOfficeModel.FK_Contarct_Clients" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

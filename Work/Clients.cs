@@ -24,12 +24,13 @@ namespace Work
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }
-        public int PassportSeries { get; set; }
-        public int PassportID { get; set; }
+        public string PassportSeries { get; set; }
+        public string PassportID { get; set; }
         public string PlaseOfResidence { get; set; }
         public string Registration { get; set; }
         public string CountryOfBirth { get; set; }
     
+        public virtual Citizen Citizen { get; set; }
         public virtual NameCountry NameCountry { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contarct> Contarct { get; set; }

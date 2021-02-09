@@ -25,12 +25,13 @@ namespace Work
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Contarct> Contarct { get; set; }
         public virtual DbSet<Mouths> Mouths { get; set; }
         public virtual DbSet<NameCountry> NameCountry { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Workers> Workers { get; set; }
         public virtual DbSet<Archive> Archive { get; set; }
+        public virtual DbSet<Citizen> Citizen { get; set; }
+        public virtual DbSet<Clients> Clients { get; set; }
     }
 }

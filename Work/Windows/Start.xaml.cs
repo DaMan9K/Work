@@ -40,8 +40,8 @@ namespace Work.Windows
                 Windows.Manager manager = new Windows.Manager();
                 manager.Show();
                 this.Close();
-            }
-            else if(m == null)
+            } 
+            if(m == null)
             {
                MessageBox.Show("такого пользователя нет");
             }

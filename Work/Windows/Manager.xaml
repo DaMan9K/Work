@@ -66,7 +66,7 @@
                     <DataGridTextColumn Width="0.4*" Header="Номер паспорта" Binding="{Binding PassportID}" />
                     <DataGridTextColumn Width="0.4*" Header="Факт.место.проживания" Binding="{Binding PlaseOfResidence}" />
                     <DataGridTextColumn Width="0.4*" Header="Место регистрации" Binding="{Binding Registration}" />
-                    <DataGridTextColumn Width="0.4*" Header="Гражданство" Binding="{Binding CountryOfBiryh}"/>
+                    <DataGridTextColumn Width="0.4*" Header="Гражданство" Binding="{Binding CountryOfBirth}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel  Margin="0,0,162,0" Height="149" VerticalAlignment="Bottom">
@@ -77,7 +77,7 @@
                 <TextBox x:Name="TBAPOR" materialDesign:HintAssist.Hint="Факт.Место прож."  MaxHeight="30"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
                 <CheckBox x:Name="CBReg"   Content=""  ToolTip="Поставьте галочку если место жительсва соответствует регестрации"/>
                 <TextBox x:Name="TBRegistr" materialDesign:HintAssist.Hint="Место прож."  MaxHeight="30"   Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
-                <ComboBox x:Name="CBCitizen" Margin="15 25" VerticalAlignment="Bottom"  MaxHeight="30"  HorizontalAlignment="Left" />
+                <ComboBox x:Name="CBCitizen" Margin="15 25" VerticalAlignment="Bottom"  MaxHeight="30"  HorizontalAlignment="Left" SelectedIndex="0" />
             </WrapPanel>
             <Button x:Name="BTSaveClients" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,88" VerticalAlignment="Bottom" Width="114" Click="BTSaveClients_OnClick"/>
             <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,24,33" VerticalAlignment="Bottom" Width="116" />

@@ -17,6 +17,12 @@
           <Property Name="InterestOnALoan" Type="int" Nullable="false" />
           <Property Name="DueDate" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Citizen">
+          <Key>
+            <PropertyRef Name="Citizen" />
+          </Key>
+          <Property Name="Citizen" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="IDClients" />
@@ -25,8 +31,8 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PassportSeries" Type="int" Nullable="false" />
-          <Property Name="PassportID" Type="int" Nullable="false" />
+          <Property Name="PassportSeries" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="PassportID" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="PlaseOfResidence" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Registration" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CountryOfBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -83,6 +89,18 @@
             </Principal>
             <Dependent Role="Archive">
               <PropertyRef Name="IdContract" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Citizen">
+          <End Role="Citizen" Type="Self.Citizen" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citizen">
+              <PropertyRef Name="Citizen" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="CountryOfBirth" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -148,6 +166,7 @@
         </Association>
         <EntityContainer Name="Хранилище CreditOfficeModelContainer">
           <EntitySet Name="Archive" EntityType="Self.Archive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Citizen" EntityType="Self.Citizen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contarct" EntityType="Self.Contarct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mouths" EntityType="Self.Mouths" Schema="dbo" store:Type="Tables" />
@@ -157,6 +176,10 @@
           <AssociationSet Name="FK_Archive_Contarct" Association="Self.FK_Archive_Contarct">
             <End Role="Contarct" EntitySet="Contarct" />
             <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Citizen" Association="Self.FK_Clients_Citizen">
+            <End Role="Citizen" EntitySet="Citizen" />
+            <End Role="Clients" EntitySet="Clients" />
           </AssociationSet>
           <AssociationSet Name="FK_Clients_NameCountry" Association="Self.FK_Clients_NameCountry">
             <End Role="NameCountry" EntitySet="NameCountry" />
@@ -183,22 +206,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CreditOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Clients">
-          <Key>
-            <PropertyRef Name="IDClients" />
-          </Key>
-          <Property Name="IDClients" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PassportSeries" Type="Int32" Nullable="false" />
-          <Property Name="PassportID" Type="Int32" Nullable="false" />
-          <Property Name="PlaseOfResidence" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Registration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountryOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="NameCountry" Relationship="Self.FK_Clients_NameCountry" FromRole="Clients" ToRole="NameCountry" />
-          <NavigationProperty Name="Contarct" Relationship="Self.FK_Contarct_Clients" FromRole="Clients" ToRole="Contarct" />
-        </EntityType>
         <EntityType Name="Contarct">
           <Key>
             <PropertyRef Name="IdContract" />
@@ -209,10 +216,10 @@
           <Property Name="CreditAmount" Type="Double" Nullable="false" />
           <Property Name="InterestOnALoan" Type="Int32" Nullable="false" />
           <Property Name="DueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Clients" Relationship="Self.FK_Contarct_Clients" FromRole="Contarct" ToRole="Clients" />
           <NavigationProperty Name="Mouths" Relationship="Self.FK_Contarct_Mouths" FromRole="Contarct" ToRole="Mouths" />
           <NavigationProperty Name="Workers" Relationship="Self.FK_Contarct_Workers" FromRole="Contarct" ToRole="Workers" />
           <NavigationProperty Name="Archive" Relationship="CreditOfficeModel.FK_Archive_Contarct" FromRole="Contarct" ToRole="Archive" />
+          <NavigationProperty Name="Clients" Relationship="CreditOfficeModel.FK_Contarct_Clients" FromRole="Contarct" ToRole="Clients" />
         </EntityType>
         <EntityType Name="Mouths">
           <Key>
@@ -226,7 +233,7 @@
             <PropertyRef Name="Country" />
           </Key>
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_NameCountry" FromRole="NameCountry" ToRole="Clients" />
+          <NavigationProperty Name="Clients" Relationship="CreditOfficeModel.FK_Clients_NameCountry" FromRole="NameCountry" ToRole="Clients" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -251,30 +258,6 @@
           <NavigationProperty Name="Contarct" Relationship="Self.FK_Contarct_Workers" FromRole="Workers" ToRole="Contarct" />
           <NavigationProperty Name="Post1" Relationship="Self.FK_Workers_Post" FromRole="Workers" ToRole="Post" />
         </EntityType>
-        <Association Name="FK_Clients_NameCountry">
-          <End Role="NameCountry" Type="Self.NameCountry" Multiplicity="1" />
-          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NameCountry">
-              <PropertyRef Name="Country" />
-            </Principal>
-            <Dependent Role="Clients">
-              <PropertyRef Name="CountryOfBirth" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Contarct_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Contarct" Type="Self.Contarct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="IDClients" />
-            </Principal>
-            <Dependent Role="Contarct">
-              <PropertyRef Name="IdClients" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Contarct_Mouths">
           <End Role="Mouths" Type="Self.Mouths" Multiplicity="1" />
           <End Role="Contarct" Type="Self.Contarct" Multiplicity="*" />
@@ -312,20 +295,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="COfficeEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clients" EntityType="Self.Clients" />
           <EntitySet Name="Contarct" EntityType="Self.Contarct" />
           <EntitySet Name="Mouths" EntityType="Self.Mouths" />
           <EntitySet Name="NameCountry" EntityType="Self.NameCountry" />
           <EntitySet Name="Post" EntityType="Self.Post" />
           <EntitySet Name="Workers" EntityType="Self.Workers" />
-          <AssociationSet Name="FK_Clients_NameCountry" Association="Self.FK_Clients_NameCountry">
-            <End Role="NameCountry" EntitySet="NameCountry" />
-            <End Role="Clients" EntitySet="Clients" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Contarct_Clients" Association="Self.FK_Contarct_Clients">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Contarct" EntitySet="Contarct" />
-          </AssociationSet>
           <AssociationSet Name="FK_Contarct_Mouths" Association="Self.FK_Contarct_Mouths">
             <End Role="Mouths" EntitySet="Mouths" />
             <End Role="Contarct" EntitySet="Contarct" />
@@ -342,6 +316,20 @@
           <AssociationSet Name="FK_Archive_Contarct" Association="CreditOfficeModel.FK_Archive_Contarct">
             <End Role="Contarct" EntitySet="Contarct" />
             <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <EntitySet Name="Citizen" EntityType="CreditOfficeModel.Citizen" />
+          <EntitySet Name="Clients" EntityType="CreditOfficeModel.Clients" />
+          <AssociationSet Name="FK_Clients_Citizen" Association="CreditOfficeModel.FK_Clients_Citizen">
+            <End Role="Citizen" EntitySet="Citizen" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_NameCountry" Association="CreditOfficeModel.FK_Clients_NameCountry">
+            <End Role="NameCountry" EntitySet="NameCountry" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contarct_Clients" Association="CreditOfficeModel.FK_Contarct_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Contarct" EntitySet="Contarct" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Archive">
@@ -369,27 +357,72 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Citizen">
+          <Key>
+            <PropertyRef Name="Citizen1" />
+          </Key>
+          <Property Name="Citizen1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clients" Relationship="CreditOfficeModel.FK_Clients_Citizen" FromRole="Citizen" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="IDClients" />
+          </Key>
+          <Property Name="IDClients" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassportSeries" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PassportID" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="PlaseOfResidence" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Registration" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryOfBirth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Citizen" Relationship="CreditOfficeModel.FK_Clients_Citizen" FromRole="Clients" ToRole="Citizen" />
+          <NavigationProperty Name="NameCountry" Relationship="CreditOfficeModel.FK_Clients_NameCountry" FromRole="Clients" ToRole="NameCountry" />
+          <NavigationProperty Name="Contarct" Relationship="CreditOfficeModel.FK_Contarct_Clients" FromRole="Clients" ToRole="Contarct" />
+        </EntityType>
+        <Association Name="FK_Clients_Citizen">
+          <End Type="CreditOfficeModel.Citizen" Role="Citizen" Multiplicity="1" />
+          <End Type="CreditOfficeModel.Clients" Role="Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citizen">
+              <PropertyRef Name="Citizen1" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="CountryOfBirth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_NameCountry">
+          <End Type="CreditOfficeModel.NameCountry" Role="NameCountry" Multiplicity="1" />
+          <End Type="CreditOfficeModel.Clients" Role="Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameCountry">
+              <PropertyRef Name="Country" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="CountryOfBirth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contarct_Clients">
+          <End Type="CreditOfficeModel.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="CreditOfficeModel.Contarct" Role="Contarct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="IDClients" />
+            </Principal>
+            <Dependent Role="Contarct">
+              <PropertyRef Name="IdClients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище CreditOfficeModelContainer" CdmEntityContainer="COfficeEntities1">
-          <EntitySetMapping Name="Clients">
-            <EntityTypeMapping TypeName="CreditOfficeModel.Clients">
-              <MappingFragment StoreEntitySet="Clients">
-                <ScalarProperty Name="IDClients" ColumnName="IDClients" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
-                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
-                <ScalarProperty Name="PlaseOfResidence" ColumnName="PlaseOfResidence" />
-                <ScalarProperty Name="Registration" ColumnName="Registration" />
-                <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Contarct">
             <EntityTypeMapping TypeName="CreditOfficeModel.Contarct">
               <MappingFragment StoreEntitySet="Contarct">
@@ -448,6 +481,28 @@
                 <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
                 <ScalarProperty Name="IdContract" ColumnName="IdContract" />
                 <ScalarProperty Name="IdArchive" ColumnName="IdArchive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citizen">
+            <EntityTypeMapping TypeName="CreditOfficeModel.Citizen">
+              <MappingFragment StoreEntitySet="Citizen">
+                <ScalarProperty Name="Citizen1" ColumnName="Citizen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CreditOfficeModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
+                <ScalarProperty Name="Registration" ColumnName="Registration" />
+                <ScalarProperty Name="PlaseOfResidence" ColumnName="PlaseOfResidence" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IDClients" ColumnName="IDClients" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

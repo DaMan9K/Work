@@ -12,25 +12,17 @@ namespace Work
     using System;
     using System.Collections.Generic;
     
-    public partial class Contarct
+    public partial class Citizen
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Contarct()
+        public Citizen()
         {
-            this.Archive = new HashSet<Archive>();
+            this.Clients = new HashSet<Clients>();
         }
     
-        public int IdContract { get; set; }
-        public int IdClients { get; set; }
-        public int IdWorker { get; set; }
-        public double CreditAmount { get; set; }
-        public int InterestOnALoan { get; set; }
-        public string DueDate { get; set; }
+        public string Citizen1 { get; set; }
     
-        public virtual Mouths Mouths { get; set; }
-        public virtual Workers Workers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Archive> Archive { get; set; }
-        public virtual Clients Clients { get; set; }
+        public virtual ICollection<Clients> Clients { get; set; }
     }
 }

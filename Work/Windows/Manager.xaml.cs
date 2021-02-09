@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -74,7 +75,7 @@ namespace Work.Windows
             SProch.Value = 11;
             string Sptest;
             Sptest = SProch.Value.ToString();
-            CBCitizen.ItemsSource = credit.Citizen.ToList();
+            CBCitizen.ItemsSource = credit.Citizen.Select(y =>y.Citizen1).ToList();
             DGContr.ItemsSource = credit.Contarct.ToList();
             DGClient.ItemsSource = credit.Clients.ToList();
             CBMouth.ItemsSource = credit.Mouths.Select(x => x.NomberOfMouths).ToList();
@@ -117,25 +118,7 @@ namespace Work.Windows
 
         }
 
-        private void Check(TextBox tb)
-        {
-            if (tb.Text.Length == 10)
-            {
-                double Seria = 0;
-                double number = 0;
-                Seria = Convert.ToInt32(tb.Text.Remove(4, 7));
-                number = Convert.ToInt32(tb.Text.Remove(0, 4));
-                Clients clients = new Clients();
-                clients.PassportSeries = Convert.ToInt32(Seria);
-                clients.PassportID = Convert.ToInt32(number);
-            }
-            else
-            {
-                MessageBox.Show("Введены неправильные серия и номер паспорта");
-            }
-            
-
-        }
+       
 
         private void TBPass_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -144,20 +127,38 @@ namespace Work.Windows
 
         private void BTSaveClients_OnClick(object sender, RoutedEventArgs e)
         {
-            Clients clients = new Clients()
-            {
-                FirstName = TBFName.Text,
-                SecondName = TBSName.Text,
-                LastName = TBLName.Text,
-                CountryOfBirth = CBCitizen.Text,
-                PlaseOfResidence = TBAPOR.Text,
-                Registration = TBRegistr.Text
 
-                
-                
-            };
           
-            Check(TBPass);
+            
+            if (TBPass.Text.Length == 10)
+            {
+
+                int Seria = Convert.ToInt32(TBPass.Text.Remove(4, 6));
+                int number = Convert.ToInt32(TBPass.Text.Remove(0, 4));
+                Clients clients = new Clients()
+                {
+                    FirstName = TBFName.Text,
+                    SecondName = TBSName.Text,
+                    LastName = TBLName.Text,
+                    CountryOfBirth = CBCitizen.Text,
+                    PlaseOfResidence = TBAPOR.Text,
+                    Registration = TBRegistr.Text,
+                    PassportSeries = Seria.ToString(),
+                    PassportID = number.ToString()
+
+                    
+
+                 };
+                credit.Clients.Add(clients);
+                Update();
+
+
+            }
+            else
+            {
+                MessageBox.Show("Введены неправильные серия и номер паспорта");
+            }
+            
         }
 
         private void CBReg_Checked(object sender, RoutedEventArgs e)
