@@ -33,10 +33,10 @@
             <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,24,33" VerticalAlignment="Bottom" Width="116" />
 
             <WrapPanel Margin="0,0,162,0" Height="149" VerticalAlignment="Bottom">
-                <ComboBox x:Name="CBCLients" Margin="15 25" VerticalAlignment="Bottom"  SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
-                <ComboBox x:Name="CBWorker" Margin=" 15 25" VerticalAlignment="Bottom"  SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
-                <ComboBox x:Name="CBMouth" Margin="15 25"  VerticalAlignment="Bottom" SelectedIndex="0" HorizontalAlignment="Left" Width="120"/>
-                <TextBox x:Name="TBCredit" materialDesign:HintAssist.Hint="Введите сумму кредита"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <ComboBox x:Name="CBCLients" Margin="15 25" VerticalAlignment="Bottom"  MaxHeight="30"   SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
+                <ComboBox x:Name="CBWorker" Margin=" 15 25" VerticalAlignment="Bottom"  MaxHeight="30"   SelectedIndex="0" HorizontalAlignment="Left" Width="167"/>
+                <ComboBox x:Name="CBMouth" Margin="15 25"  VerticalAlignment="Bottom" MaxHeight="30" SelectedIndex="0" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBCredit" materialDesign:HintAssist.Hint="Введите сумму кредита" MaxHeight="30"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
 
                 <Grid>
                     <TextBlock x:Name="TBLPocent" Margin="15 10" Text="{Binding ElementName=SProch, Path=Value}"   TextWrapping="Wrap"  Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="13"/>
@@ -70,15 +70,17 @@
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel  Margin="0,0,162,0" Height="149" VerticalAlignment="Bottom">
-                <TextBox x:Name="TBLName" materialDesign:HintAssist.Hint="Фамилия" Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
-                <TextBox x:Name="TBFName" materialDesign:HintAssist.Hint="Имя"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
-                <TextBox x:Name="TBSName" materialDesign:HintAssist.Hint="Отчество"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
-                <TextBox x:Name="TBPass" materialDesign:HintAssist.Hint="С/Н паспорта" Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120" PreviewTextInput="TBPass_PreviewTextInput"/>
-                <TextBox x:Name="TBAPOR" materialDesign:HintAssist.Hint="Факт.Место прож." Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBLName" materialDesign:HintAssist.Hint="Фамилия" Margin="15 25" MaxHeight="30"   TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBFName" materialDesign:HintAssist.Hint="Имя"   MaxHeight="30" Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBSName" materialDesign:HintAssist.Hint="Отчество"  MaxHeight="30"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <TextBox x:Name="TBPass" materialDesign:HintAssist.Hint="С/Н паспорта"  MaxHeight="30"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120" PreviewTextInput="TBPass_PreviewTextInput"/>
+                <TextBox x:Name="TBAPOR" materialDesign:HintAssist.Hint="Факт.Место прож."  MaxHeight="30"  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
                 <CheckBox x:Name="CBReg"   Content=""  ToolTip="Поставьте галочку если место жительсва соответствует регестрации"/>
-                <TextBox x:Name="TBRegistr" materialDesign:HintAssist.Hint="Место прож."  Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
-                <ComboBox x:Name="CBCitizen" Margin="15 25" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+                <TextBox x:Name="TBRegistr" materialDesign:HintAssist.Hint="Место прож."  MaxHeight="30"   Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+                <ComboBox x:Name="CBCitizen" Margin="15 25" VerticalAlignment="Bottom"  MaxHeight="30"  HorizontalAlignment="Left" />
             </WrapPanel>
+            <Button x:Name="BTSaveClients" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,88" VerticalAlignment="Bottom" Width="114" Click="BTSaveClients_OnClick"/>
+            <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,0,24,33" VerticalAlignment="Bottom" Width="116" />
 
         </Grid>
         

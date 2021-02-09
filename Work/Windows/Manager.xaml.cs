@@ -74,6 +74,7 @@ namespace Work.Windows
             SProch.Value = 11;
             string Sptest;
             Sptest = SProch.Value.ToString();
+            CBCitizen.ItemsSource = credit.Citizen.ToList();
             DGContr.ItemsSource = credit.Contarct.ToList();
             DGClient.ItemsSource = credit.Clients.ToList();
             CBMouth.ItemsSource = credit.Mouths.Select(x => x.NomberOfMouths).ToList();
@@ -110,15 +111,58 @@ namespace Work.Windows
             contract.DueDate = CBMouth.Text;
             contract.InterestOnALoan = Convert.ToInt32(TBLPocent.Text);
             credit.Contarct.Add(contract);
-             Update();
+            Update();
 
 
+
+        }
+
+        private void Check(TextBox tb)
+        {
+            if (tb.Text.Length == 10)
+            {
+                double Seria = 0;
+                double number = 0;
+                Seria = Convert.ToInt32(tb.Text.Remove(4, 7));
+                number = Convert.ToInt32(tb.Text.Remove(0, 4));
+                Clients clients = new Clients();
+                clients.PassportSeries = Convert.ToInt32(Seria);
+                clients.PassportID = Convert.ToInt32(number);
+            }
+            else
+            {
+                MessageBox.Show("Введены неправильные серия и номер паспорта");
+            }
+            
 
         }
 
         private void TBPass_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = "1234567890".IndexOf(e.Text) < 0;
+        }
+
+        private void BTSaveClients_OnClick(object sender, RoutedEventArgs e)
+        {
+            Clients clients = new Clients()
+            {
+                FirstName = TBFName.Text,
+                SecondName = TBSName.Text,
+                LastName = TBLName.Text,
+                CountryOfBirth = CBCitizen.Text,
+                PlaseOfResidence = TBAPOR.Text,
+                Registration = TBRegistr.Text
+
+                
+                
+            };
+          
+            Check(TBPass);
+        }
+
+        private void CBReg_Checked(object sender, RoutedEventArgs e)
+        {
+            TBAPOR.Text = TBRegistr.Text;
         }
     }
 }
