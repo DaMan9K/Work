@@ -38,18 +38,30 @@ namespace Work.Windows
         private void Flued()
         {
            List<Workers> vs = credit.Workers.ToList();
-           foreach (var item in vs)
-            {
-                CBWorker.Items.Add($"{item.LastName} {item.FirstName} {item.SecondName}");
-                 CBWorkerson.Add(item.IdWorker);
+           
+           
+               foreach (var item in vs)
+               {
+                   
+                   CBWorker.Items.Add($"{item.LastName} {item.FirstName} {item.SecondName}");
+                   CBWorkerson.Add(item.IdWorker);
 
-           }
-           List<Clients> ss = credit.Clients.ToList();
-           foreach (var iClientse in ss)
-           {
-               CBCLients.Items.Add($"{iClientse.LastName} {iClientse.FirstName} {iClientse.SecondName}");
-               CBClientson.Add(iClientse.IDClients);
-           }
+               }
+               vs.Clear();
+
+
+            List<Clients> ss = credit.Clients.ToList();
+           
+           
+           
+               foreach (var iClientse in ss)
+               {
+                   CBCLients.Items.Add($"{iClientse.LastName} {iClientse.FirstName} {iClientse.SecondName}");
+                   CBClientson.Add(iClientse.IDClients);
+               }
+               ss.Clear();
+            
+           
         }
         private void Update()
         {
@@ -84,14 +96,25 @@ namespace Work.Windows
 
         private void BTContr_Click(object sender, RoutedEventArgs e)
         {
+            CBCLients.Items.Clear();
+            CBCLients.SelectedIndex = 0;
+            CBWorker.Items.Clear();
+            CBWorker.SelectedIndex = 0;
+            Flued();
             GContr.Visibility = Visibility.Visible;
             GClient.Visibility = Visibility.Hidden;
         }
 
         private void BTСlients_Click(object sender, RoutedEventArgs e)
         {
+            CBCLients.Items.Clear();
+            CBCLients.SelectedIndex = 0;
+            CBWorker.Items.Clear();
+            CBWorker.SelectedIndex = 0;
+            Flued();
             GClient.Visibility = Visibility.Visible;
             GContr.Visibility = Visibility.Hidden;
+            
         }
 
 
@@ -105,7 +128,7 @@ namespace Work.Windows
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Вы ввели неверные символы");
+                MessageBox.Show($"{exception}Вы ввели неверные символы");
             }
 
             contract.IdClients = CBClientson[CBCLients.SelectedIndex];
@@ -164,6 +187,59 @@ namespace Work.Windows
         private void CBReg_Checked(object sender, RoutedEventArgs e)
         {
             TBAPOR.Text = TBRegistr.Text;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Clients cont = DGClient.SelectedItem as Clients;
+                if (cont != null)
+
+                    credit.Clients.Remove(cont);
+                Update();
+                if (cont == null)
+                {
+                    MessageBox.Show("Вы не выбрали элемент");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Вы не убрали контракт с эти клиентом");
+            }
+           
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Contarct contract = DGContr.SelectedItem as Contarct;
+            if (contract != null)
+
+                credit.Contarct.Remove(contract);
+            Update();
+            if (contract == null)
+            {
+                MessageBox.Show("Вы не выбрали что будете удалять");
+            }
+        }
+
+        private void CBReg_Checked_1(object sender, RoutedEventArgs e)
+        {
+
+                TBRegistr.Text = TBAPOR.Text;
+
+        }
+
+        private  void BTCalculation_Click(object sender, RoutedEventArgs e)
+        {
+            Contarct contract = DGContr.SelectedItem as Contarct;
+            if (contract != null)
+            {
+                Calculation calculations = new Calculation(contract);
+                calculations.ShowDialog();
+                Update();
+            }
+                
         }
     }
 }

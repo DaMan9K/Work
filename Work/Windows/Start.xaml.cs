@@ -35,16 +35,17 @@ namespace Work.Windows
 
        
             Workers m = creditoffice.Workers.Where(c => c.Login == Login.Text && c.Password == Password.Password).SingleOrDefault();
-            if(m.Post == "Менеджер")
+            if (m == null)
             {
-                Windows.Manager manager = new Windows.Manager();
+                MessageBox.Show("такого пользователя нет");
+            }
+            else if (m.Post == "Менеджер")
+            {
+                Manager manager = new Manager();
                 manager.Show();
                 this.Close();
             } 
-            if(m == null)
-            {
-               MessageBox.Show("такого пользователя нет");
-            }
+            
            
         }
         private void BTBack_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,27 @@
+﻿<Window x:Class="Work.Windows.Calculation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Work.Windows"
+        mc:Ignorable="d"
+        Title="Calculation" Height="800" Width="600" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="АО 'ДесятиМинутка'" VerticalAlignment="Top" Margin="395,10,0,0" Width="197"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="1-е проезд попрыгайчиков город попрыгайчиков" VerticalAlignment="Top" Margin="395,26,0,0" Width="197" Height="30"/>
+        <TextBlock x:Name="TBLData" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="21,139,0,0" Width="103" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Тел:+78005553535,DesitiMinutka.ru" VerticalAlignment="Top" Margin="395,56,0,0" Width="197" Height="30"/>
+        <TextBlock x:Name="TBLData1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="395,139,0,0" Width="103" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,256,0,0" TextWrapping="Wrap" Text="АО «Тинькофф Банк», лицензия Банка России № 2673, далее – «Банк», сообщает, что между Вами и Банком заключен Договор о выпуске и обслуживании Кредитной карты № далее – «Договор». В соответствии с Договором была выпущена Кредитная карта № сроком действия до Кредитный лимит по карте составляет По состоянию на задолженность составляет " VerticalAlignment="Top" Width="572" Height="80"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,458,0,0" TextWrapping="Wrap" Text=" Реквизиты для осуществления безналичного пополнения: Банк получатель: АО «Тинькофф Банк» К/с № 30101810145250000974 БИК 044525974 РАСЧЕТНЫЙ СЧЕТ: 30232810100000000004 Получатель:АО«ТинькоффБанк» Назначение платежа: Перевод средств по Договору № С уважением, Руководитель Управления Обработки Заявлений Э.Г. Темников к/с 30101810145250000974 в ГУ Банка России по ЦФО БИК 044525974 ИНН 7710140679 КПП 773401001" VerticalAlignment="Top" Width="298" Height="223"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Процентная ставка: " VerticalAlignment="Top" Width="120" Margin="70,359,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Срок выдачи: " VerticalAlignment="Top" Width="120" Margin="70,382,0,0"/>
+        <TextBlock x:Name="TBPorcent" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text=": " VerticalAlignment="Top" Width="120" Margin="196,359,0,0"/>
+        <TextBlock x:Name="TBLDueData" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text=": " VerticalAlignment="Top" Width="120" Margin="196,382,0,0"/>
+        <TextBlock  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Сумма займа: " VerticalAlignment="Top" Width="120" Margin="71,405,0,0"/>
+        <TextBlock x:Name="TBMoney" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text=": " VerticalAlignment="Top" Width="120" Margin="196,405,0,0"/>
+
+    </Grid>
+   
+
+</Window>
