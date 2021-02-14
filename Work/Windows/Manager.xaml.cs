@@ -34,6 +34,7 @@ namespace Work.Windows
             Flued();
             Update();
         }
+        //Заполнение комбобоксов с учетом id клиентов и работников
 
         private void Flued()
         {
@@ -61,7 +62,8 @@ namespace Work.Windows
                }
                ss.Clear();
             
-           
+                   //Заполнение датагридов и выравнивание id в компбобоксах
+                   //Сохренение бд и т.д.
         }
         private void Update()
         {
