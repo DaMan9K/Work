@@ -47,6 +47,7 @@
           <Property Name="CreditAmount" Type="float" Nullable="false" />
           <Property Name="InterestOnALoan" Type="int" Nullable="false" />
           <Property Name="DueDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AgreementDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Mouths">
           <Key>
@@ -220,6 +221,7 @@
           <NavigationProperty Name="Workers" Relationship="Self.FK_Contarct_Workers" FromRole="Contarct" ToRole="Workers" />
           <NavigationProperty Name="Archive" Relationship="CreditOfficeModel.FK_Archive_Contarct" FromRole="Contarct" ToRole="Archive" />
           <NavigationProperty Name="Clients" Relationship="CreditOfficeModel.FK_Contarct_Clients" FromRole="Contarct" ToRole="Clients" />
+          <Property Name="AgreementDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Mouths">
           <Key>
@@ -426,6 +428,7 @@
           <EntitySetMapping Name="Contarct">
             <EntityTypeMapping TypeName="CreditOfficeModel.Contarct">
               <MappingFragment StoreEntitySet="Contarct">
+                <ScalarProperty Name="AgreementDate" ColumnName="AgreementDate" />
                 <ScalarProperty Name="IdContract" ColumnName="IdContract" />
                 <ScalarProperty Name="IdClients" ColumnName="IdClients" />
                 <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />

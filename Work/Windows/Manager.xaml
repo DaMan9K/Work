@@ -22,7 +22,7 @@
         </StackPanel>
         
 
-        <Grid x:Name="GContr" Visibility="Hidden" Margin="117,0,0,0">
+        <Grid x:Name="GContr" Visibility="Visible" Margin="117,0,0,0">
             <DataGrid x:Name="DGContr" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="0.4*" Header="Клиент" Binding="{Binding IdClients.LastName}"/>
@@ -30,6 +30,7 @@
                     <DataGridTextColumn Width="0.4*" Header="Сумма кредита" Binding="{Binding CreditAmount}"/>
                     <DataGridTextColumn Width="0.4*" Header="Процент" Binding="{Binding InterestOnALoan}"/>
                     <DataGridTextColumn Width="0.4*" Header="Срок оплаты" Binding="{Binding DueDate}"/>
+                    <DataGridTextColumn Width="0.4*" Header="Дата заключение" Binding="{Binding AgreementDate}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="BTSave" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,88" VerticalAlignment="Bottom" Width="114" Click="BTSave_OnClick"/>
@@ -59,7 +60,7 @@
                 </Grid>
             </WrapPanel>
         </Grid>
-        <Grid Visibility="Visible"  x:Name="GClient" Margin="117,0,0,0">
+        <Grid Visibility="Hidden"  x:Name="GClient" Margin="117,0,0,0">
             <DataGrid x:Name="DGClient" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="0.4*" Header="Фамилия" Binding="{Binding LastName}" />

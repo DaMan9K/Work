@@ -26,6 +26,7 @@ namespace Work
         public double CreditAmount { get; set; }
         public int InterestOnALoan { get; set; }
         public string DueDate { get; set; }
+        public Nullable<System.DateTime> AgreementDate { get; set; }
     
         public virtual Mouths Mouths { get; set; }
         public virtual Workers Workers { get; set; }

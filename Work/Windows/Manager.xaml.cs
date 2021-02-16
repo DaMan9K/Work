@@ -130,10 +130,11 @@ namespace Work.Windows
             {
                 MessageBox.Show($"{exception}Вы ввели неверные символы");
             }
-
+            contract.AgreementDate = DateTime.Now;
             contract.IdClients = CBClientson[CBCLients.SelectedIndex];
             contract.DueDate = CBMouth.Text;
             contract.InterestOnALoan = Convert.ToInt32(TBLPocent.Text);
+            
             credit.Contarct.Add(contract);
             Update();
 
@@ -167,8 +168,8 @@ namespace Work.Windows
                     PlaseOfResidence = TBAPOR.Text,
                     Registration = TBRegistr.Text,
                     PassportSeries = Seria.ToString(),
-                    PassportID = number.ToString()
-
+                    PassportID = number.ToString(),
+                    
                     
 
                  };
