@@ -25,17 +25,17 @@
         <Grid x:Name="GContr" Visibility="Visible" Margin="117,0,0,0">
             <DataGrid x:Name="DGContr" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="0.4*" Header="Клиент" Binding="{Binding IdClients.LastName}"/>
-                    <DataGridTextColumn Width="0.4*" Header="Работник" Binding="{Binding IdWorker.LastName}"/>
+                    <DataGridTextColumn Width="0.4*" Header="Клиент" Binding="{Binding IdClients}"/>
+                    <DataGridTextColumn Width="0.4*" Header="Работник" Binding="{Binding IdWorker}"/>
                     <DataGridTextColumn Width="0.4*" Header="Сумма кредита" Binding="{Binding CreditAmount}"/>
                     <DataGridTextColumn Width="0.4*" Header="Процент" Binding="{Binding InterestOnALoan}"/>
                     <DataGridTextColumn Width="0.4*" Header="Срок оплаты" Binding="{Binding DueDate}"/>
                     <DataGridTextColumn Width="0.4*" Header="Дата заключение" Binding="{Binding AgreementDate}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="BTSave" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,88" VerticalAlignment="Bottom" Width="114" Click="BTSave_OnClick"/>
+            <Button x:Name="BTSave" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,93" VerticalAlignment="Bottom" Width="114" Click="BTSave_OnClick"/>
             <Button x:Name="BTCalculation" Content="Рассчет" HorizontalAlignment="Right" Margin="0,0,26,60" VerticalAlignment="Bottom" Width="114" Click="BTCalculation_Click"/>
-            <Button Content="Удалить" ToolTip="Перед удаленим выберите строку" HorizontalAlignment="Right" Margin="0,0,24,33" VerticalAlignment="Bottom" Click="ButtonBase_OnClick" Width="116" />
+            <Button Content="Удалить" ToolTip="Перед удаленим выберите строку" HorizontalAlignment="Right" Margin="0,0,24,27" VerticalAlignment="Bottom" Click="ButtonBase_OnClick" Width="116" />
 
             <WrapPanel Margin="0,0,162,0" Height="149" VerticalAlignment="Bottom">
                 <ComboBox x:Name="CBCLients" Foreground="White" Margin="15 25" VerticalAlignment="Bottom"  Height="auto"   SelectedIndex="0" HorizontalAlignment="Left" Width="auto"/>

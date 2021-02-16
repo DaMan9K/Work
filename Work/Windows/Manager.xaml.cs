@@ -26,7 +26,7 @@ namespace Work.Windows
     { 
         List<int> CBWorkerson = new List<int>();
         List<int> CBClientson = new List<int>();
-        COfficeEntities1 credit  = new COfficeEntities1();   
+        COEntities credit  = new COEntities();   
         
         public Manager()
         {
@@ -241,6 +241,10 @@ namespace Work.Windows
                 Calculation calculations = new Calculation(contract);
                 calculations.ShowDialog();
                 Update();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали клиента для печати дошовора");
             }
                 
         }

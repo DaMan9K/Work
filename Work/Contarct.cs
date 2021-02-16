@@ -26,12 +26,12 @@ namespace Work
         public double CreditAmount { get; set; }
         public int InterestOnALoan { get; set; }
         public string DueDate { get; set; }
-        public Nullable<System.DateTime> AgreementDate { get; set; }
+        public System.DateTime AgreementDate { get; set; }
     
-        public virtual Mouths Mouths { get; set; }
-        public virtual Workers Workers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Archive> Archive { get; set; }
         public virtual Clients Clients { get; set; }
+        public virtual Mouths Mouths { get; set; }
+        public virtual Workers Workers { get; set; }
     }
 }

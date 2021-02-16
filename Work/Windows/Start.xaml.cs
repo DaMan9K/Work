@@ -22,7 +22,7 @@ namespace Work.Windows
     public partial class Start : Window
     {
 
-         COfficeEntities1  creditoffice = new COfficeEntities1();
+         COEntities  creditoffice = new COEntities();
         public Start()
         {
             
@@ -34,14 +34,14 @@ namespace Work.Windows
         {
 
        
-            Workers m = creditoffice.Workers.Where(c => c.Login == Login.Text && c.Password == Password.Password).SingleOrDefault();
+            var m = creditoffice.Workers.SingleOrDefault(c => c.Login == Login.Text && c.Password == Password.Password);
             if (m == null)
             {
                 MessageBox.Show("такого пользователя нет");
             }
             else if (m.Post == "Менеджер")
             {
-                Manager manager = new Manager();
+                var manager = new Manager();
                 manager.Show();
                 this.Close();
             } 

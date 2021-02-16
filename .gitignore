@@ -348,3 +348,10 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Work/Model.Context.cs
+/Work/Model.Context.tt
+/Work/Model.cs
+/Work/Model.Designer.cs
+/Work/Model.edmx
+/Work/Model.edmx.diagram
+/Work/Model.tt
