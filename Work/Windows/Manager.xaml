@@ -81,8 +81,8 @@
                 <TextBox x:Name="TBAPOR" Foreground="White" materialDesign:HintAssist.Hint="Факт.Место прож."    Margin="15 25"  TextWrapping="Wrap" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
                 <CheckBox x:Name="CBReg" Foreground="White"   Content=""  ToolTip="Поставьте галочку если место жительсва соответствует регестрации" Checked="CBReg_Checked_1"/>
 
-                <TextBox x:Name="TBRegistr" Foreground="White" materialDesign:HintAssist.Hint="Место прож."  MaxHeight="30"   Margin="15 25"  TextWrapping="Wrap" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120" />
-                <ComboBox x:Name="CBCitizen" Foreground="White" Margin="15 25" VerticalAlignment="Bottom"  MaxHeight="30"  HorizontalAlignment="Left" SelectedIndex="0" />
+                <TextBox x:Name="TBRegistr" Foreground="White" materialDesign:HintAssist.Hint="Место прож."   Margin="15 25"  TextWrapping="Wrap" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120" />
+                <ComboBox x:Name="CBCitizen" Foreground="White" Margin="15 25" VerticalAlignment="Bottom" Height="auto"  HorizontalAlignment="Left" SelectedIndex="0" />
                 
             </WrapPanel>
             <Button x:Name="BTSaveClients" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,26,96" VerticalAlignment="Bottom" Width="114" Click="BTSaveClients_OnClick"/>
