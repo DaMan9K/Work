@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,22 +30,61 @@ namespace Work.Windows
             InitializeComponent();
 
         }
+        public static bool CheckBoxTB(TextBox tb)
+        {
+            if (String.IsNullOrEmpty(tb.Text))
+            {
+                tb.BorderBrush = Brushes.Red;
+                
+                
+                return true;
+            }
+          
+            else
+            {
+                
+                tb.BorderBrush = Brushes.Gray;
+                return false;
+            }
 
+        }
+        public static bool CheckBoxPB(PasswordBox pb)
+        {
+            if (String.IsNullOrEmpty(pb.Password))
+            {
+                pb.BorderBrush = Brushes.Red;
+                
+                return true;
+            }
+            else
+            {
+                pb.BorderBrush = Brushes.Gray;
+                return false;
+            }
+
+        }
         private void BTLogin_Click(object sender, RoutedEventArgs e)
         {
-
-       
-            var m = creditoffice.Workers.SingleOrDefault(c => c.Login == Login.Text && c.Password == Password.Password);
-            if (m == null)
+            if (CheckBoxTB(Login) || CheckBoxPB(Password))
             {
-                MessageBox.Show("такого пользователя нет");
+                MessageBox.Show("Вы не заполнили все поля");
             }
-            else if (m.Post == "Менеджер")
+            else
             {
-                var manager = new Manager();
-                manager.Show();
-                this.Close();
-            } 
+                var m = creditoffice.Workers.SingleOrDefault(c => c.Login == Login.Text && c.Password == Password.Password);
+                if (m == null)
+                {
+                    MessageBox.Show("такого пользователя нет");
+                }
+                else if (m.Post == "Менеджер")
+                {
+                    var manager = new Manager();
+                    manager.Show();
+                    this.Close();
+                }
+            }
+            
+            
             
            
         }
