@@ -24,6 +24,7 @@ namespace Work.Windows
     {
 
          COEntities  creditoffice = new COEntities();
+
         public Start()
         {
             
@@ -78,7 +79,7 @@ namespace Work.Windows
                 }
                 else if (m.Post == "Менеджер")
                 {
-                    var manager = new Manager();
+                    Manager manager = new Manager();
                     manager.Show();
                     this.Close();
                 }

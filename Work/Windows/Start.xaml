@@ -19,7 +19,7 @@
                 VerticalAlignment="Top" Click="BTLogin_Click"
                 Margin="0 5"
                />
-            <Button x:Name="BTBack" Content="Вернуться"
+            <Button x:Name="BTBack" Content="Закрыть"
                 BorderBrush="Black"
                 VerticalAlignment="Top" Click="BTBack_Click"
                 Margin=" 0 5"
