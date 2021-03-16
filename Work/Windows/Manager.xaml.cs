@@ -26,18 +26,30 @@ namespace Work.Windows
     { 
         List<int> CBWorkerson = new List<int>();
         List<int> CBClientson = new List<int>();
-        COEntities credit  = new COEntities();   
+        CreditEntities credit  = new CreditEntities();
+        Workers workerStart;
         
-        public Manager()
+        public Manager(Workers m)
         {
             InitializeComponent();
             Flued();
             Update();
+            workerStart = m;
+            initialization();
         }
         //Заполнение комбобоксов с учетом id клиентов и работников
+        public void initialization()
+        {
+            if (workerStart.Post != "Главный менеджер")
+            {
+                BTContr.Visibility = Visibility.Collapsed;
+                DGContr.Visibility = Visibility.Collapsed;
+            }
+        }
 
         private void Flued()
         {
+            
            List<Workers> vs = credit.Workers.ToList();
            
            
@@ -118,18 +130,40 @@ namespace Work.Windows
             GContr.Visibility = Visibility.Hidden;
             
         }
+        public static bool CheckBoxTB(TextBox tb)
+        {
+            if (String.IsNullOrEmpty(tb.Text))
+            {
+                tb.BorderBrush = Brushes.Red;
+
+
+                return true;
+            }
+
+            else
+            {
+
+                tb.BorderBrush = Brushes.Gray;
+                return false;
+            }
+        }
+       
+        
 
 
         private void BTSave_OnClick(object sender, RoutedEventArgs e)
         {
+          
             Contarct contract = new Contarct();
             contract.IdWorker = CBWorkerson[CBWorker.SelectedIndex];
+            
             try
             {
                 contract.CreditAmount = Convert.ToDouble(TBCredit.Text);
             }
             catch (Exception exception)
             {
+                
                 MessageBox.Show($"{exception}Вы ввели неверные символы");
             }
             contract.AgreementDate = DateTime.Now;

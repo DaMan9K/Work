@@ -23,7 +23,7 @@ namespace Work.Windows
     public partial class Start : Window
     {
 
-         COEntities  creditoffice = new COEntities();
+         CreditEntities  creditoffice = new CreditEntities();
 
         public Start()
         {
@@ -47,7 +47,6 @@ namespace Work.Windows
                 tb.BorderBrush = Brushes.Gray;
                 return false;
             }
-
         }
         public static bool CheckBoxPB(PasswordBox pb)
         {
@@ -62,10 +61,10 @@ namespace Work.Windows
                 pb.BorderBrush = Brushes.Gray;
                 return false;
             }
-
         }
         private void BTLogin_Click(object sender, RoutedEventArgs e)
         {
+            
             if (CheckBoxTB(Login) || CheckBoxPB(Password))
             {
                 MessageBox.Show("Вы не заполнили все поля");
@@ -73,21 +72,14 @@ namespace Work.Windows
             else
             {
                 var m = creditoffice.Workers.SingleOrDefault(c => c.Login == Login.Text && c.Password == Password.Password);
-                if (m == null)
-                {
-                    MessageBox.Show("такого пользователя нет");
-                }
+                if (m == null) MessageBox.Show("такого пользователя нет");             
                 else if (m.Post == "Менеджер")
                 {
-                    Manager manager = new Manager();
+                    Manager manager = new Manager(m);
                     manager.Show();
                     this.Close();
                 }
             }
-            
-            
-            
-           
         }
         private void BTBack_Click(object sender, RoutedEventArgs e)
         {

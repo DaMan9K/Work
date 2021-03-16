@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:Work.Windows"
 
         mc:Ignorable="d"
-        Title="Manager" Height="499.5" Width="900">
+        Title="Manager" Background="#FF303030" Height="499.5" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,8 +17,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Left" Width="117">
-            <Button x:Name="BTContr" Content="Контракты" Height="240" Click="BTContr_Click"/>
-            <Button x:Name="BTСlients" Content="Клиенты" Height="231" Click="BTСlients_Click"/>
+            <Button Visibility="Visible" x:Name="BTContr" Content="Контракты" Height="240" Click="BTContr_Click"/>
+            <Button x:Name="BTСlients" Content="Клиенты" Height="240" Click="BTСlients_Click"/>
         </StackPanel>
         
 
@@ -63,6 +63,7 @@
         <Grid Visibility="Hidden"  x:Name="GClient" Margin="117,0,0,0">
             <DataGrid x:Name="DGClient" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.4*" Header="ID Клиента" Binding="{Binding IDClients}" />
                     <DataGridTextColumn Width="0.4*" Header="Фамилия" Binding="{Binding LastName}" />
                     <DataGridTextColumn Width="0.4*" Header="Имя" Binding="{Binding FirstName}" />
                     <DataGridTextColumn Width="0.4*" Header="Отчество" Binding="{Binding SecondName}" />
